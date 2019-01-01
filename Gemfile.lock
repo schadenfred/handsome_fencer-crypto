@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    handsome_fencer-crypto (0.1.0)
+    handsome_fencer-crypto (0.1.2)
       guard
       guard-minitest
 
@@ -152,4 +152,4 @@ DEPENDENCIES
   rake (~> 10.0)
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

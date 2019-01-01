@@ -1,7 +1,8 @@
+
 require "handsome_fencer/crypto/version"
 require "openssl"
 require "base64"
-
+require 'byebug'
 module HandsomeFencer::Crypto
 
   class << self
@@ -50,13 +51,12 @@ module HandsomeFencer::Crypto
     end
 
     def obfuscate(env=nil, dir=nil, ext=nil)
-      ext = ext || '.env'
+      ext = ext || "#{env}.env"
       source_files(dir, ext).each { |file| encrypt(file, env) }
     end
 
     def expose(env=nil, dir=nil, ext=nil)
-      ext = ext || '.env.enc'
-      dir = dir || 'docker'
+      ext = ext || "#{env}.env.enc"
       source_files(dir, ext).each { |file| decrypt(file, env) }
     end
 

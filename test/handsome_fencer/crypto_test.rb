@@ -78,19 +78,24 @@ describe HandsomeFencer::Crypto do
     Given(:enc_files) { subject.source_files('tmp', '.env.enc')}
     Given { FileUtils.mkdir_p('tmp/dokken/test' ) }
     Given { subject.write_to_file(env_var, 'tmp/dokken/production.env')}
+    Given { subject.write_to_file(env_var, 'tmp/dokken/staging.env')}
     Given { subject.write_to_file(env_var, 'tmp/dokken/test/production.env')}
     Given { subject.generate_key_file('tmp', 'production') }
+    Given { subject.generate_key_file('tmp', 'staging') }
     Given { enc_files.size.must_equal 0 }
     Given { subject.obfuscate('production', 'tmp') }
 
     Then { assert enc_files.each { |ef| File.exist?(ef) } }
+    Then { refute File.exist? 'tmp/dokken/staging.env.enc' }
 
     describe "#expose(env, dir, ext)" do
 
+      Given { subject.obfuscate('staging', 'tmp') }
       Given(:env_files) { subject.source_files('tmp', '.env') }
       Given { env_files.each { |file| File.delete file } }
       Given { env_files.each { |file| refute File.exist? file } }
       Given { subject.expose('production', 'tmp') }
+      Given { subject.expose('staging', 'tmp') }
 
       Then { env_files.each { |file| assert File.exist? file } }
     end
