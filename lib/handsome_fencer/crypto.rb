@@ -69,7 +69,7 @@ module HandsomeFencer::Crypto
       when ENV[env_key]
         ENV[env_key]
       when File.exist?(key_file)
-        File.read(key_file)
+        File.read(key_file).strip
       end
     end
   end

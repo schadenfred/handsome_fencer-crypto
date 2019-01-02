@@ -49,9 +49,9 @@ describe HandsomeFencer::Crypto do
 
       Given { ENV['PRODUCTION_KEY'] = nil }
       Given { subject.generate_key_file('tmp', 'production') }
-      Given(:key_from_file) { File.read('./tmp/production.key') }
+      Given(:key_from_file) { File.read('./tmp/production.key').strip }
 
-      Then { assert_equal key_from_file, subject.get_key('production') }
+      Then {  assert_equal key_from_file, subject.get_key('production') }
     end
   end
 
