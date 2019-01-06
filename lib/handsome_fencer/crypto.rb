@@ -2,7 +2,6 @@
 require "handsome_fencer/crypto/version"
 require "openssl"
 require "base64"
-require 'byebug'
 module HandsomeFencer::Crypto
 
   class << self
