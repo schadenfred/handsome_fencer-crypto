@@ -32,9 +32,7 @@ jobs:
       - run: chmod +x ./.circleci/setup-gem-credentials.sh
       - run: ./.circleci/setup-gem-credentials.sh
       - run: cat ~/.gem/credentials
-      - run: git config user.name "ci"
-      - run: git config user.email ci@ci.com
-      - run: git commit -m "ci"
+      - run: git stash
       - run: gem release
         
 workflows:
