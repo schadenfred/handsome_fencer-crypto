@@ -36,6 +36,7 @@ workflows:
   build-release: 
     jobs: 
       - build
+      - test
       - release:
           filters: 
             branches: 
