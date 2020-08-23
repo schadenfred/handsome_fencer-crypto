@@ -7,8 +7,8 @@ services:
       context: .
       dockerfile: roro/containers/ruby_image/Dockerfile
     environment:
-      - RUBY_IMAGE=${RUBY_IMAGE}
-    command: rake test
+      - RUBY_VERSION=${RUBY_VERSION}
+    command: bundle exec rake test
     volumes:
       - gem_cache:/gems
 

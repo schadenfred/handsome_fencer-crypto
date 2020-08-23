@@ -1,20 +1,17 @@
-ARG RUBY_IMAGE=ruby:2.7-alpine
+ARG RUBY_VERSION=2.7
+ARG RUBY_IMAGE=ruby:${RUBY_VERSION}-alpine
 FROM $RUBY_IMAGE
 
 RUN apk add --no-cache --update build-base linux-headers git
 
 ENV APP_HOME /usr/src/app/
 ENV BUNDLE_PATH /gems
+ENV GEM_PATH ${BUNDLE_PATH}
+ENV GEM_HOME ${BUNDLE_PATH}
 
-RUN mkdir ${APP_HOME}
 RUN mkdir ${BUNDLE_PATH}
 
-VOLUME ${APP_HOME}
-VOLUME ${BUNDLE_PATH}
-
-COPY . ./ 
-
 WORKDIR ${APP_HOME}
-
-RUN bundle 
+COPY . ${APP_HOME}
+RUN bundle install
 COPY . ${APP_HOME}
