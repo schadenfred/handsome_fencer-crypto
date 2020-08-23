@@ -13,13 +13,13 @@ jobs:
       - checkout
       - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose build ruby_gem
       - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose run ruby_gem ruby -v
-      - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose run ruby_gem bundle exec rake test
+      - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose run ruby_gem rake test
       - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose build ruby_gem
       - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem ruby -v
-      - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem bundle exec rake test
+      - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem rake test
       - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose build ruby_gem
       - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem ruby -v
-      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem bundle exec rake test    
+      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem rake test    
       
   release:
     machine: true

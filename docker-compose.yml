@@ -8,6 +8,7 @@ services:
       dockerfile: roro/containers/ruby_image/Dockerfile
     environment:
       - RUBY_IMAGE=${RUBY_IMAGE}
+    command: rake test
     volumes:
       - gem_cache:/gems
 
