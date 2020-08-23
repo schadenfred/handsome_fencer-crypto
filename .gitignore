@@ -13,6 +13,6 @@ roro/**/*.env
 roro/**/*.key
 
 tmp/*
-!tmp/.gitkeep 
+!tmp/.keep 
 sandbox/*
 !sandbox/.keep 
