@@ -29,6 +29,7 @@ jobs:
       - run: roro generate::exposed ci
       - run: echo 'source roro/containers/ruby_image/ci.env' >> $BASH_ENV
       - run: printenv RUBYGEMS_API_KEY
+      - run: chmod +x ./.circleci/setup-gem-credentials.sh
       - run: ./.circleci/setup-gem-credentials.sh
       - run: cat ~/.gem/credentials
       - run: gem release
