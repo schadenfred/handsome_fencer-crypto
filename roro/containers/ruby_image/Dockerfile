@@ -12,9 +12,9 @@ RUN mkdir ${BUNDLE_PATH}
 VOLUME ${APP_HOME}
 VOLUME ${BUNDLE_PATH}
 
+COPY . ./ 
+
 WORKDIR ${APP_HOME}
 
-
-COPY . ${APP_HOME}
-RUN gem update bundler
 RUN bundle 
+COPY . ${APP_HOME}
